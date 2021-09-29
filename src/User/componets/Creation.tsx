@@ -42,8 +42,10 @@ const Creation = () => {
 
   switch (auth._tag) {
     case "Loading":
+      return <p>Loading...</p>;
+
     case "Authenticated":
-      return null;
+      return <p>Sign out to create a new account.</p>;
 
     case "Failed":
     case "Unauthenticated":
