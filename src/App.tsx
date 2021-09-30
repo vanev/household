@@ -3,12 +3,12 @@ import { Provider as AuthProvider } from "./Authentication/hooks/useAuth";
 import Authentication from "./Authentication/components/Authentication";
 import UserCreation from "./User/componets/Creation";
 import Home from "./Home";
-import styles from "./App.module.css";
+import css from "./App.module.css";
 
 const App = () => (
   <AuthProvider>
     <Router>
-      <div className={styles.App}>
+      <div className={css.root}>
         <Authentication />
 
         <Switch>
