@@ -1,0 +1,43 @@
+.root {
+}
+
+.item {
+}
+
+.item + .item {
+  margin-top: 0.25rem;
+}
+.item + .addButton {
+  margin-top: 0.25rem;
+}
+
+.addButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0.3125rem 0.25rem 0.3125rem 2rem;
+  border: none;
+  border-radius: 0.25rem;
+  appearance: none;
+  background: none;
+  transition: background-color ease 250ms, color ease 250ms;
+  text-align: left;
+  font-family: var(--font-sans-serif);
+  font-size: 1rem;
+  color: #a0a0a0;
+}
+.addButton:before {
+  content: "+";
+  position: absolute;
+  top: 0;
+  left: 6px;
+  display: block;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.addButton:hover,
+.addButton:active {
+  background-color: #ececec;
+  color: #000000;
+}
