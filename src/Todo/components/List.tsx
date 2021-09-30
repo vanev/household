@@ -19,7 +19,7 @@ const List = ({ query, className }: ListProps) => {
   >([]);
 
   useEffect(() => {
-    onSnapshot(query, ({ docs }) => setSnapshots(docs));
+    return onSnapshot(query, ({ docs }) => setSnapshots(docs));
   }, [query]);
 
   useEffect(() => {
