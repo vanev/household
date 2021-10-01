@@ -1,6 +1,6 @@
-import List from "./Todo/components/List";
-import todosCollection from "./Todo/queries/collection";
-import css from "./Home.module.css";
+import List from "../../Todo/components/List";
+import todosCollection from "../../Todo/queries/collection";
+import css from "./styles.module.css";
 
 const Home = () => (
   <div className={css.root}>

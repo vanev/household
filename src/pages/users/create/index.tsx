@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
-import useAuth from "../../Authentication/hooks/useAuth";
-import Email from "../../Email";
-import firebaseAuth from "../../Firebase/auth";
-import Password from "../../Password";
+import useAuth from "../../../Authentication/hooks/useAuth";
+import Email from "../../../Email";
+import firebaseAuth from "../../../Firebase/auth";
+import Password from "../../../Password";
 
 type Props = {
   onSubmit: (email: Email, password: Password) => unknown;
