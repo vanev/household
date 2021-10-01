@@ -1,0 +1,39 @@
+.root {
+  padding: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.title + .link {
+  margin-top: 1.25rem;
+}
+
+.link {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0.25rem;
+  margin: 0;
+  border: none;
+  border-radius: 0.25rem;
+  background: none;
+  font-family: var(--font-sans-serif);
+  font-size: 1rem;
+  text-align: left;
+  color: black;
+  text-decoration: none;
+  transition: background-color ease 250ms;
+  cursor: pointer;
+}
+.link:hover,
+.link:active {
+  background-color: #ececec;
+}
+
+.link + .link {
+  margin-top: 0.5rem;
+}

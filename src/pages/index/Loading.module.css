@@ -4,11 +4,6 @@
 
 .title {
   margin: 0;
-}
-
-.title + .list {
-  margin-top: 1.25rem;
-}
-
-.list {
+  font-size: 2rem;
+  font-weight: bold;
 }
