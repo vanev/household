@@ -1,5 +1,8 @@
+import { tryCatch } from "fp-ts/TaskEither";
 import * as FirebaseAuth from "firebase/auth";
 import * as React from "react";
+import Email from "../../Email";
+import Password from "../../Password";
 import auth from "../../Firebase/auth";
 import * as Auth from "../types/Authentication";
 
@@ -58,17 +61,31 @@ export const Provider = ({ children }: Props) => {
     FirebaseAuth.onAuthStateChanged(auth, handleChange, handleError);
   }, []);
 
-  const authenticate = React.useCallback((email, password) => {
-    FirebaseAuth.signInWithEmailAndPassword(auth, email, password).catch(
-      (reason) => {
-        setState(failed(reason));
-      },
-    );
-  }, []);
+  const authenticate = React.useCallback(
+    (email: Email, password: Password) =>
+      tryCatch(
+        () => FirebaseAuth.signInWithEmailAndPassword(auth, email, password),
+        (reason) => {
+          const error =
+            reason instanceof Error ? reason : new Error("Unknown Error");
 
-  const unauthenticate = React.useCallback(() => {
-    FirebaseAuth.signOut(auth);
-  }, []);
+          setState(failed(error));
+
+          return error;
+        },
+      ),
+    [],
+  );
+
+  const unauthenticate = React.useCallback(
+    () =>
+      tryCatch(
+        () => FirebaseAuth.signOut(auth),
+        (reason) =>
+          reason instanceof Error ? reason : new Error("Unknown Error"),
+      ),
+    [],
+  );
 
   let authentication: Auth.Authentication;
   switch (state._tag) {

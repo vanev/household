@@ -1,10 +1,30 @@
 import classNames from "classnames";
-import { useState } from "react";
 import {
   Failed,
   Unauthenticated,
 } from "../../Authentication/types/Authentication";
+import useForm from "../../Form/hooks/useForm";
+import Email from "../../Email";
+import Password from "../../Password";
 import css from "./AuthForm.module.css";
+
+type IncompleteValues = {
+  email: string;
+  password: string;
+};
+
+type CompleteValues = {
+  email: Email;
+  password: Password;
+};
+
+const initialValues: IncompleteValues = {
+  email: "",
+  password: "",
+};
+
+const validator = (values: IncompleteValues): values is CompleteValues =>
+  !!values.email && !!values.password;
 
 type Props = {
   auth: Unauthenticated | Failed;
@@ -12,40 +32,74 @@ type Props = {
 };
 
 const AuthForm = ({ auth, className }: Props) => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const handleSubmit = (values: CompleteValues) => {
+    return auth.authenticate(values.email, values.password);
+  };
 
-  return (
-    <form
-      className={classNames(css.root, className)}
-      onSubmit={(event) => {
-        event.preventDefault();
-        auth.authenticate(email, password);
-      }}
-    >
-      <input
-        className={css.input}
-        type="email"
-        placeholder="example@email.net"
-        onChange={(event) => setEmail(event.target.value)}
-      />
+  const state = useForm(initialValues, validator, handleSubmit);
 
-      <input
-        className={css.input}
-        type="password"
-        placeholder="Passw0rd!"
-        onChange={(event) => setPassword(event.target.value)}
-      />
+  switch (state._tag) {
+    case "Success":
+      return (
+        <p className={classNames(css.root, className)}>
+          <strong>{state.result.user.email}</strong> Authenticated!
+        </p>
+      );
 
-      {auth._tag === "Failed" ? (
-        <p className={css.error}>{auth.error.message}</p>
-      ) : null}
+    case "Incomplete":
+    case "Complete":
+    case "Submitting":
+    case "Failure":
+      return (
+        <form
+          className={classNames(css.root, className)}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <input
+            className={css.input}
+            type="email"
+            placeholder="example@email.net"
+            disabled={state._tag === "Submitting"}
+            value={state.values.email}
+            onChange={(event) => {
+              if (state._tag !== "Submitting") {
+                state.change("email")(event.target.value);
+              }
+            }}
+          />
 
-      <button className={css.button} type="submit">
-        Submit
-      </button>
-    </form>
-  );
+          <input
+            className={css.input}
+            type="password"
+            placeholder="Passw0rd!"
+            disabled={state._tag === "Submitting"}
+            value={state.values.password}
+            onChange={(event) => {
+              if (state._tag !== "Submitting") {
+                state.change("password")(event.target.value);
+              }
+            }}
+          />
+
+          {state._tag === "Failure" ? (
+            <p className={css.error}>{state.error.message}</p>
+          ) : null}
+
+          <button
+            className={css.button}
+            type="button"
+            disabled={
+              state._tag === "Incomplete" || state._tag === "Submitting"
+            }
+            onClick={() => {
+              if (state._tag === "Complete") state.submit();
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      );
+  }
 };
 
 export default AuthForm;
