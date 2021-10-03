@@ -1,0 +1,45 @@
+.root {
+  text-align: right;
+}
+
+.input {
+  appearance: none;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  background: none;
+  font-family: var(--font-sans-serif);
+  font-size: 0.875rem;
+}
+
+.input + .input,
+.input + .button,
+.input + .error {
+  margin-top: 0.5rem;
+}
+
+.button {
+  appearance: none;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  background: #e1e1e1;
+  font-family: var(--font-sans-serif);
+  font-size: 0.875rem;
+}
+
+.button + .error,
+.error + .button {
+  margin-top: 0.5rem;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.875rem;
+  text-align: center;
+}

@@ -1,64 +1,40 @@
-import { createUserWithEmailAndPassword } from "@firebase/auth";
-import { useState } from "react";
 import useAuth from "../../../Authentication/hooks/useAuth";
-import Email from "../../../Email";
-import firebaseAuth from "../../../Firebase/auth";
-import Password from "../../../Password";
+import Form from "./Form";
+import css from "./Create.module.css";
 
-type Props = {
-  onSubmit: (email: Email, password: Password) => unknown;
-};
-
-const Form = ({ onSubmit }: Props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSubmit(email, password);
-      }}
-    >
-      <input
-        type="email"
-        placeholder="fake@email.net"
-        onChange={(event) => setEmail(event.target.value)}
-      />
-
-      <input
-        type="password"
-        placeholder="Passw0rd!"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
-
-const Creation = () => {
+const UsersCreate = () => {
   const auth = useAuth();
 
   switch (auth._tag) {
     case "Loading":
-      return <p>Loading...</p>;
+      return (
+        <div className={css.root}>
+          <p className={css.title}>Loading...</p>
+        </div>
+      );
 
     case "Authenticated":
-      return <p>Sign out to create a new account.</p>;
+      return (
+        <div className={css.root}>
+          <p className={css.title}>
+            <button className={css.button} onClick={auth.unauthenticate}>
+              Sign out
+            </button>{" "}
+            to create a new account.
+          </p>
+        </div>
+      );
 
     case "Failed":
     case "Unauthenticated":
       return (
-        <div>
-          <Form
-            onSubmit={(email, password) => {
-              createUserWithEmailAndPassword(firebaseAuth, email, password);
-            }}
-          />
+        <div className={css.root}>
+          <h1 className={css.title}>Create Account</h1>
+
+          <Form className={css.form} />
         </div>
       );
   }
 };
 
-export default Creation;
+export default UsersCreate;
