@@ -1,8 +1,8 @@
 import { QueryDocumentSnapshot, setDoc } from "@firebase/firestore";
 import classNames from "classnames";
-import { isSameDay } from "date-fns/fp";
+import { isSameDay, isBefore, addDays, format } from "date-fns/fp";
 import { flow } from "fp-ts/function";
-import { some, none, map, getOrElse } from "fp-ts/Option";
+import { some, none, map, getOrElse, isSome } from "fp-ts/Option";
 import { MouseEventHandler, useMemo } from "react";
 import { Todo, isComplete } from "../types/Todo";
 import css from "./ClosedTodo.module.css";
@@ -41,6 +41,20 @@ const ClosedTodo = ({ snapshot, onExpandClick, className }: Props) => {
 
         <span className={css.icons}>
           {isToday(todo) ? <span className={css.icon}>☀️</span> : null}
+
+          {isSome(todo.deadline) ? (
+            <>
+              <span className={css.icon}>
+                {isBefore(addDays(2)(new Date()))(todo.deadline.value)
+                  ? "❗️"
+                  : "❕️"}
+              </span>
+
+              <span className={css.note}>
+                {format("MM-dd-yyyy", todo.deadline.value)}
+              </span>
+            </>
+          ) : null}
         </span>
       </button>
     </div>
