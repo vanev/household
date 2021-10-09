@@ -1,26 +1,29 @@
-import { onSnapshot, Query, QueryDocumentSnapshot } from "@firebase/firestore";
+import { QueryDocumentSnapshot } from "@firebase/firestore";
 import classNames from "classnames";
-import { Option, some, none, reduce } from "fp-ts/lib/Option";
+import { Option, some, none, reduce } from "fp-ts/Option";
 import { useEffect, useState } from "react";
+import FirestoreObservable from "../../Firebase/FirestoreObservable";
 import Todo from "../types/Todo";
 import ClosedTodo from "./ClosedTodo";
 import ExpandedTodo from "./ExpandedTodo";
 import css from "./List.module.css";
 
 type ListProps = {
-  query: Query<Todo>;
+  observable: FirestoreObservable<Todo>;
   className?: string;
 };
 
-const List = ({ query, className }: ListProps) => {
+const List = ({ observable, className }: ListProps) => {
   const [expandedId, setExpandedId] = useState<Option<string>>(none);
   const [snapshots, setSnapshots] = useState<
     Array<QueryDocumentSnapshot<Todo>>
   >([]);
 
   useEffect(() => {
-    return onSnapshot(query, ({ docs }) => setSnapshots(docs));
-  }, [query]);
+    return observable({
+      next: ({ docs }) => setSnapshots(docs),
+    });
+  }, [observable]);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
