@@ -9,6 +9,17 @@
 .root:active {
   background-color: #ececec;
 }
+.root.completed .checkbox {
+  color: grey;
+  background-color: grey;
+  filter: grayscale(1);
+}
+.root.completed .title {
+  color: grey;
+}
+.root.completed .label {
+  text-decoration: line-through;
+}
 
 .checkbox {
   width: 1.25rem;

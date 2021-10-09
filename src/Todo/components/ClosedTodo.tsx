@@ -28,7 +28,11 @@ const ClosedTodo = ({ snapshot, onExpandClick, className }: Props) => {
   const todo = useMemo(() => snapshot.data(), [snapshot]);
 
   return (
-    <div className={classNames(css.root, className)}>
+    <div
+      className={classNames(css.root, className, {
+        [css.completed]: isComplete(todo),
+      })}
+    >
       <input
         className={css.checkbox}
         type="checkbox"
@@ -45,7 +49,8 @@ const ClosedTodo = ({ snapshot, onExpandClick, className }: Props) => {
           {isSome(todo.deadline) ? (
             <>
               <span className={css.icon}>
-                {isBefore(addDays(2)(new Date()))(todo.deadline.value)
+                {!isComplete(todo) &&
+                isBefore(addDays(2)(new Date()))(todo.deadline.value)
                   ? "❗️"
                   : "❕️"}
               </span>
