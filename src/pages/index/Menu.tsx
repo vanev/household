@@ -10,6 +10,10 @@ const Menu = ({ auth }: Props) => (
   <div className={css.root}>
     <h1 className={css.title}>Household</h1>
 
+    <Link className={css.link} to="/today">
+      Today
+    </Link>
+
     <Link className={css.link} to="/everything">
       Everything
     </Link>
