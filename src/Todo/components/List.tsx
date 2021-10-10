@@ -1,5 +1,8 @@
-import { QueryDocumentSnapshot } from "@firebase/firestore";
+import { DocumentChange, QueryDocumentSnapshot } from "@firebase/firestore";
 import classNames from "classnames";
+import { reduce as reduceArray } from "fp-ts/Array";
+import { deleteAt, toArray, upsertAt } from "fp-ts/Map";
+import { Ord as stringOrd, Eq as stringEq } from "fp-ts/string";
 import { Option, some, none, reduce } from "fp-ts/Option";
 import { useEffect, useState } from "react";
 import FirestoreObservable from "../../Firebase/FirestoreObservable";
@@ -7,6 +10,20 @@ import Todo from "../types/Todo";
 import ClosedTodo from "./ClosedTodo";
 import ExpandedTodo from "./ExpandedTodo";
 import css from "./List.module.css";
+
+const applyChange = (
+  memo: Map<string, QueryDocumentSnapshot<Todo>>,
+  { type, doc }: DocumentChange<Todo>,
+) => {
+  switch (type) {
+    case "added":
+    case "modified":
+      return upsertAt(stringEq)(doc.id, doc)(memo);
+
+    case "removed":
+      return deleteAt(stringEq)(doc.id)(memo);
+  }
+};
 
 type ListProps = {
   observable: FirestoreObservable<Todo>;
@@ -16,12 +33,18 @@ type ListProps = {
 const List = ({ observable, className }: ListProps) => {
   const [expandedId, setExpandedId] = useState<Option<string>>(none);
   const [snapshots, setSnapshots] = useState<
-    Array<QueryDocumentSnapshot<Todo>>
-  >([]);
+    Map<string, QueryDocumentSnapshot<Todo>>
+  >(new Map());
 
   useEffect(() => {
     return observable({
-      next: ({ docs }) => setSnapshots(docs),
+      next: (snapshot) => {
+        const changes = snapshot.docChanges();
+
+        setSnapshots((snapshots) =>
+          reduceArray(snapshots, applyChange)(changes),
+        );
+      },
     });
   }, [observable]);
 
@@ -40,7 +63,7 @@ const List = ({ observable, className }: ListProps) => {
 
   return (
     <div className={classNames(css.root, className)}>
-      {snapshots.map((snapshot) => {
+      {toArray(stringOrd)(snapshots).map(([_, snapshot]) => {
         return isExpanded(snapshot.id) ? (
           <ExpandedTodo
             key={snapshot.id}
