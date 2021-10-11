@@ -1,10 +1,10 @@
 import { query, where, onSnapshot } from "@firebase/firestore";
 import { startOfDay, endOfDay } from "date-fns/fp";
-import { merge } from "../../lib/Observable";
-import FirestoreObservable from "../../lib/Firebase/FirestoreObservable";
-import Todo from "../../types/Todo";
-import List from "../../components/TodoList";
-import collection from "../../queries/Todos/collection";
+import { merge } from "lib/Observable";
+import FirestoreObservable from "lib/Firebase/FirestoreObservable";
+import Todo from "types/Todo";
+import List from "components/TodoList";
+import collection from "queries/Todos/collection";
 import css from "./styles.module.css";
 
 const now = new Date();

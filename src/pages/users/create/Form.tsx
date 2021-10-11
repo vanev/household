@@ -1,10 +1,10 @@
 import { createUserWithEmailAndPassword, UserCredential } from "@firebase/auth";
 import classNames from "classnames";
 import { TaskEither, tryCatch } from "fp-ts/TaskEither";
-import firebaseAuth from "../../../lib/Firebase/auth";
-import Email from "../../../lib/Email";
-import Password from "../../../lib/Password";
-import useForm from "../../../hooks/useForm";
+import firebaseAuth from "lib/Firebase/auth";
+import Email from "lib/Email";
+import Password from "lib/Password";
+import useForm from "hooks/useForm";
 import css from "./Form.module.css";
 
 type IncompleteValues = {

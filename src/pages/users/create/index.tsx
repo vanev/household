@@ -1,4 +1,4 @@
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "hooks/useAuth";
 import Form from "./Form";
 import css from "./Create.module.css";
 

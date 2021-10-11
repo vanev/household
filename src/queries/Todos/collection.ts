@@ -1,9 +1,9 @@
 import * as Firestore from "@firebase/firestore";
 import { map } from "fp-ts/Option";
-import database from "../../lib/Firebase/database";
-import { isNonEmptyString } from "../../lib/String";
-import { fromTimestamp } from "../../lib/Date";
-import Todo from "../../types/Todo";
+import database from "lib/Firebase/database";
+import { isNonEmptyString } from "lib/String";
+import { fromTimestamp } from "lib/Date";
+import Todo from "types/Todo";
 
 const todoConverter: Firestore.FirestoreDataConverter<Todo> = {
   toFirestore: (todo) => todo,

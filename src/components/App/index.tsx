@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { Provider as AuthProvider } from "../../hooks/useAuth";
+import { Provider as AuthProvider } from "hooks/useAuth";
 import Routes from "./Routes";
 import css from "./styles.module.css";
 

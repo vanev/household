@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import { Route, Redirect } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "hooks/useAuth";
 import Loading from "./Loading";
 
 const PrivateRoute = ({ children, ...rest }: ComponentProps<typeof Route>) => {

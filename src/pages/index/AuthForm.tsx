@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { Failed, Unauthenticated } from "../../types/Authentication";
-import useForm from "../../hooks/useForm";
-import Email from "../../lib/Email";
-import Password from "../../lib/Password";
+import { Failed, Unauthenticated } from "types/Authentication";
+import useForm from "hooks/useForm";
+import Email from "lib/Email";
+import Password from "lib/Password";
 import css from "./AuthForm.module.css";
 
 type IncompleteValues = {
