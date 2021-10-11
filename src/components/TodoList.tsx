@@ -3,13 +3,13 @@ import classNames from "classnames";
 import { reduce as reduceArray } from "fp-ts/Array";
 import { deleteAt, toArray, upsertAt } from "fp-ts/Map";
 import { Ord as stringOrd, Eq as stringEq } from "fp-ts/string";
-import { some, none } from "fp-ts/Option";
+import { none } from "fp-ts/Option";
 import { useEffect, useState } from "react";
 import FirestoreObservable from "lib/Firebase/FirestoreObservable";
 import useExpandable from "hooks/useExpandable";
 import Todo from "types/Todo";
-import ClosedTodo from "./ClosedTodo";
 import ExpandedTodo from "./ExpandedTodo";
+import TodoItem from "./TodoItem";
 import css from "./TodoList.module.css";
 
 const applyChange = (
@@ -51,23 +51,16 @@ const List = ({ observable, className }: ListProps) => {
 
   return (
     <div className={classNames(css.root, className)}>
-      {toArray(stringOrd)(snapshots).map(([_, snapshot]) => {
-        return isExpanded(snapshot.id) ? (
-          <ExpandedTodo
-            key={snapshot.id}
-            className={css.item}
-            snapshot={some(snapshot)}
-            onSave={close}
-          />
-        ) : (
-          <ClosedTodo
-            key={snapshot.id}
-            className={css.item}
-            snapshot={snapshot}
-            onExpandClick={() => expand(snapshot.id)}
-          />
-        );
-      })}
+      {toArray(stringOrd)(snapshots).map(([_, snapshot]) => (
+        <TodoItem
+          key={snapshot.id}
+          className={css.item}
+          snapshot={snapshot}
+          onSave={close}
+          onExpandClick={() => expand(snapshot.id)}
+          isExpanded={isExpanded(snapshot.id)}
+        />
+      ))}
 
       {isExpanded("new todo") ? (
         <ExpandedTodo className={css.item} snapshot={none} onSave={close} />
