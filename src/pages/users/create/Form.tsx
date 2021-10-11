@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, UserCredential } from "@firebase/auth";
 import classNames from "classnames";
 import { TaskEither, tryCatch } from "fp-ts/TaskEither";
-import firebaseAuth from "../../../Firebase/auth";
+import firebaseAuth from "../../../lib/Firebase/auth";
 import Email from "../../../Email";
 import Password from "../../../Password";
 import useForm from "../../../hooks/useForm";

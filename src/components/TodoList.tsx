@@ -5,7 +5,7 @@ import { deleteAt, toArray, upsertAt } from "fp-ts/Map";
 import { Ord as stringOrd, Eq as stringEq } from "fp-ts/string";
 import { Option, some, none, reduce } from "fp-ts/Option";
 import { useEffect, useState } from "react";
-import FirestoreObservable from "../Firebase/FirestoreObservable";
+import FirestoreObservable from "../lib/Firebase/FirestoreObservable";
 import Todo from "../Todo";
 import ClosedTodo from "./ClosedTodo";
 import ExpandedTodo from "./ExpandedTodo";

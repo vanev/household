@@ -1,6 +1,6 @@
 import * as Firestore from "@firebase/firestore";
 import { map } from "fp-ts/Option";
-import database from "../../Firebase/database";
+import database from "../../lib/Firebase/database";
 import { isNonEmptyString } from "../../String";
 import { fromTimestamp } from "../../Date";
 import Todo from "../../Todo";

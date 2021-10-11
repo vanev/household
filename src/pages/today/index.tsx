@@ -1,7 +1,7 @@
 import { query, where, onSnapshot } from "@firebase/firestore";
 import { startOfDay, endOfDay } from "date-fns/fp";
 import { merge } from "../../Observable";
-import FirestoreObservable from "../../Firebase/FirestoreObservable";
+import FirestoreObservable from "../../lib/Firebase/FirestoreObservable";
 import Todo from "../../Todo";
 import List from "../../components/TodoList";
 import collection from "../../queries/Todos/collection";
