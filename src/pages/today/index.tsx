@@ -3,7 +3,7 @@ import { startOfDay, endOfDay } from "date-fns/fp";
 import { merge } from "../../Observable";
 import FirestoreObservable from "../../Firebase/FirestoreObservable";
 import Todo from "../../Todo/types/Todo";
-import List from "../../Todo/components/List";
+import List from "../../components/TodoList";
 import collection from "../../Todo/queries/collection";
 import css from "./styles.module.css";
 

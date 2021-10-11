@@ -9,10 +9,10 @@ import { format } from "date-fns/fp";
 import { flow } from "fp-ts/function";
 import { Option, fromEither, none, reduce, map, getOrElse } from "fp-ts/Option";
 import { useState } from "react";
-import { fromDateInputValue } from "../../Date";
-import { isNonEmptyString } from "../../String";
-import Todo from "../types/Todo";
-import todosCollection from "../queries/collection";
+import { fromDateInputValue } from "../Date";
+import { isNonEmptyString } from "../String";
+import Todo from "../Todo/types/Todo";
+import todosCollection from "../Todo/queries/collection";
 import css from "./ExpandedTodo.module.css";
 
 type Props = {
