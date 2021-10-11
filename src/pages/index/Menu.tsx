@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Authenticated } from "../../Authentication";
+import { Authenticated } from "../../types/Authentication";
 import css from "./Menu.module.css";
 
 type Props = {
