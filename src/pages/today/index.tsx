@@ -4,7 +4,7 @@ import { merge } from "../../Observable";
 import FirestoreObservable from "../../Firebase/FirestoreObservable";
 import Todo from "../../Todo/types/Todo";
 import List from "../../components/TodoList";
-import collection from "../../Todo/queries/collection";
+import collection from "../../queries/Todos/collection";
 import css from "./styles.module.css";
 
 const now = new Date();

@@ -12,7 +12,7 @@ import { useState } from "react";
 import { fromDateInputValue } from "../Date";
 import { isNonEmptyString } from "../String";
 import Todo from "../Todo/types/Todo";
-import todosCollection from "../Todo/queries/collection";
+import todosCollection from "../queries/Todos/collection";
 import css from "./ExpandedTodo.module.css";
 
 type Props = {
