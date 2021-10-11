@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import { Route, Redirect } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import Loading from "./Loading";
 
 const PrivateRoute = ({ children, ...rest }: ComponentProps<typeof Route>) => {
@@ -12,7 +12,7 @@ const PrivateRoute = ({ children, ...rest }: ComponentProps<typeof Route>) => {
     <Route
       {...rest}
       render={({ location }) =>
-        auth._tag === "Authenticated" ? (
+        auth._tag !== "Authenticated" ? (
           children
         ) : (
           <Redirect to={{ pathname: "/", state: { from: location } }} />
