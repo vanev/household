@@ -2,7 +2,7 @@ import * as Firestore from "@firebase/firestore";
 import { map } from "fp-ts/Option";
 import database from "../../lib/Firebase/database";
 import { isNonEmptyString } from "../../String";
-import { fromTimestamp } from "../../Date";
+import { fromTimestamp } from "../../lib/Date";
 import Todo from "../../Todo";
 
 const todoConverter: Firestore.FirestoreDataConverter<Todo> = {

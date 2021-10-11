@@ -9,7 +9,7 @@ import { format } from "date-fns/fp";
 import { flow } from "fp-ts/function";
 import { Option, fromEither, none, reduce, map, getOrElse } from "fp-ts/Option";
 import { useState } from "react";
-import { fromDateInputValue } from "../Date";
+import { fromDateInputValue } from "../lib/Date";
 import { isNonEmptyString } from "../String";
 import Todo from "../Todo";
 import todosCollection from "../queries/Todos/collection";
