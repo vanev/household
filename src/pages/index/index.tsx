@@ -1,4 +1,4 @@
-import useAuth from "../../Authentication/hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import Loading from "./Loading";
 import Welcome from "./Welcome";
 import Menu from "./Menu";
