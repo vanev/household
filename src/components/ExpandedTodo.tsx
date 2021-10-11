@@ -10,7 +10,7 @@ import { flow } from "fp-ts/function";
 import { Option, fromEither, none, reduce, map, getOrElse } from "fp-ts/Option";
 import { useState } from "react";
 import { fromDateInputValue } from "../lib/Date";
-import { isNonEmptyString } from "../String";
+import { isNonEmptyString } from "../lib/String";
 import Todo from "../Todo";
 import todosCollection from "../queries/Todos/collection";
 import css from "./ExpandedTodo.module.css";
