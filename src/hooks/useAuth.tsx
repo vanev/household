@@ -4,7 +4,7 @@ import * as React from "react";
 import Email from "../Email";
 import Password from "../Password";
 import auth from "../Firebase/auth";
-import * as Auth from "../Authentication/types/Authentication";
+import * as Auth from "../Authentication";
 
 const Context = React.createContext<Auth.Authentication>(Auth.loading);
 

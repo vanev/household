@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  Unauthenticated,
-  Failed,
-} from "../../Authentication/types/Authentication";
+import { Unauthenticated, Failed } from "../../Authentication";
 import AuthForm from "./AuthForm";
 import css from "./Welcome.module.css";
 

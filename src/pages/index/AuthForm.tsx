@@ -1,8 +1,5 @@
 import classNames from "classnames";
-import {
-  Failed,
-  Unauthenticated,
-} from "../../Authentication/types/Authentication";
+import { Failed, Unauthenticated } from "../../Authentication";
 import useForm from "../../hooks/useForm";
 import Email from "../../Email";
 import Password from "../../Password";

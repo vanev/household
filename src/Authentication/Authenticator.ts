@@ -1,7 +1,7 @@
 import { UserCredential } from "@firebase/auth";
 import { TaskEither } from "fp-ts/TaskEither";
-import Email from "../../Email";
-import Password from "../../Password";
+import Email from "../Email";
+import Password from "../Password";
 
 type Authenticator = (
   email: Email,
