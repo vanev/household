@@ -1,8 +1,8 @@
 import { tryCatch } from "fp-ts/TaskEither";
 import * as FirebaseAuth from "firebase/auth";
 import * as React from "react";
-import Email from "../Email";
-import Password from "../Password";
+import Email from "../lib/Email";
+import Password from "../lib/Password";
 import auth from "../lib/Firebase/auth";
 import * as Auth from "../Authentication";
 
