@@ -1,6 +1,6 @@
 import { onSnapshot } from "@firebase/firestore";
 import FirestoreObservable from "../../lib/Firebase/FirestoreObservable";
-import Todo from "../../Todo";
+import Todo from "../../types/Todo";
 import List from "../../components/TodoList";
 import todosCollection from "../../queries/Todos/collection";
 import css from "./styles.module.css";

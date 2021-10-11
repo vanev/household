@@ -1,5 +1,5 @@
 import { isSome, Option } from "fp-ts/Option";
-import { NonEmptyString } from "./lib/NonEmptyString";
+import { NonEmptyString } from "../lib/NonEmptyString";
 
 export type Todo = {
   title: NonEmptyString;
