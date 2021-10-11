@@ -6,7 +6,7 @@ import { Ord as stringOrd, Eq as stringEq } from "fp-ts/string";
 import { Option, some, none, reduce } from "fp-ts/Option";
 import { useEffect, useState } from "react";
 import FirestoreObservable from "../Firebase/FirestoreObservable";
-import Todo from "../Todo/types/Todo";
+import Todo from "../Todo";
 import ClosedTodo from "./ClosedTodo";
 import ExpandedTodo from "./ExpandedTodo";
 import css from "./TodoList.module.css";

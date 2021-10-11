@@ -4,7 +4,7 @@ import { isSameDay, isBefore, addDays, format } from "date-fns/fp";
 import { flow } from "fp-ts/function";
 import { some, none, map, getOrElse, isSome } from "fp-ts/Option";
 import { MouseEventHandler, useMemo } from "react";
-import { Todo, isComplete } from "../Todo/types/Todo";
+import { Todo, isComplete } from "../Todo";
 import css from "./ClosedTodo.module.css";
 
 const toggleCompleted = (todo: Todo): Todo => ({

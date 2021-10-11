@@ -11,7 +11,7 @@ import { Option, fromEither, none, reduce, map, getOrElse } from "fp-ts/Option";
 import { useState } from "react";
 import { fromDateInputValue } from "../Date";
 import { isNonEmptyString } from "../String";
-import Todo from "../Todo/types/Todo";
+import Todo from "../Todo";
 import todosCollection from "../queries/Todos/collection";
 import css from "./ExpandedTodo.module.css";
 
