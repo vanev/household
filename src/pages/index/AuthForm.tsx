@@ -3,7 +3,7 @@ import {
   Failed,
   Unauthenticated,
 } from "../../Authentication/types/Authentication";
-import useForm from "../../Form/hooks/useForm";
+import useForm from "../../hooks/useForm";
 import Email from "../../Email";
 import Password from "../../Password";
 import css from "./AuthForm.module.css";

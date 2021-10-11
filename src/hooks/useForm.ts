@@ -2,7 +2,7 @@ import * as TaskEither from "fp-ts/TaskEither";
 import * as Task from "fp-ts/Task";
 import { flow } from "fp-ts/function";
 import { useState, useCallback } from "react";
-import { Request, loading, completed, failed, extract } from "../../Request";
+import { Request, loading, completed, failed, extract } from "../Request";
 
 type Incomplete<V> = {
   _tag: "Incomplete";

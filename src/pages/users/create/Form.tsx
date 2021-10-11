@@ -4,7 +4,7 @@ import { TaskEither, tryCatch } from "fp-ts/TaskEither";
 import firebaseAuth from "../../../Firebase/auth";
 import Email from "../../../Email";
 import Password from "../../../Password";
-import useForm from "../../../Form/hooks/useForm";
+import useForm from "../../../hooks/useForm";
 import css from "./Form.module.css";
 
 type IncompleteValues = {
