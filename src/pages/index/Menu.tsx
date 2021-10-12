@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Authenticated } from "types/Authentication";
+import Page from "components/Page";
 import css from "./Menu.module.css";
 
 type Props = {
@@ -7,9 +8,7 @@ type Props = {
 };
 
 const Menu = ({ auth }: Props) => (
-  <div className={css.root}>
-    <h1 className={css.title}>Household</h1>
-
+  <Page title="Menu">
     <Link className={css.link} to="/today">
       Today
     </Link>
@@ -18,10 +17,10 @@ const Menu = ({ auth }: Props) => (
       Everything
     </Link>
 
-    <button className={css.link} onClick={auth.unauthenticate}>
+    <button className={css.link} onClick={auth.unauthenticate()}>
       Sign Out
     </button>
-  </div>
+  </Page>
 );
 
 export default Menu;

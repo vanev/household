@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Unauthenticated, Failed } from "types/Authentication";
+import Page from "components/Page";
 import AuthForm from "./AuthForm";
 import css from "./Welcome.module.css";
 
@@ -8,15 +9,13 @@ type Props = {
 };
 
 const Welcome = ({ auth }: Props) => (
-  <div className={css.root}>
-    <h1 className={css.title}>Household</h1>
-
+  <Page title="Sign In" mainClassName={css.main}>
     <AuthForm className={css.authForm} auth={auth} />
 
     <Link className={css.link} to="/users/create">
       Create Account
     </Link>
-  </div>
+  </Page>
 );
 
 export default Welcome;

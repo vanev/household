@@ -1,0 +1,28 @@
+.root {
+  padding: 1.25rem;
+}
+
+.back {
+  color: inherit;
+  text-decoration: none;
+}
+.back:before {
+  content: "< ";
+}
+
+.back + .title {
+  margin-top: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.title + .main {
+  margin-top: 1.25rem;
+}
+
+.main {
+}

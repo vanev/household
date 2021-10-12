@@ -1,17 +1,5 @@
-.root {
-  padding: 1.25rem;
+.main {
   text-align: center;
-}
-
-.title {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: left;
-}
-
-.title + .authForm {
-  margin-top: 1.25rem;
 }
 
 .authForm {

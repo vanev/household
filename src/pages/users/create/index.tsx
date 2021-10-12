@@ -1,6 +1,6 @@
 import useAuth from "hooks/useAuth";
+import Page from "components/Page";
 import Form from "./Form";
-import css from "./Create.module.css";
 
 const UsersCreate = () => {
   const auth = useAuth();
@@ -8,31 +8,25 @@ const UsersCreate = () => {
   switch (auth._tag) {
     case "Loading":
       return (
-        <div className={css.root}>
-          <p className={css.title}>Loading...</p>
-        </div>
+        <Page title="Create Account" parentUrl="/">
+          Loading...
+        </Page>
       );
 
     case "Authenticated":
       return (
-        <div className={css.root}>
-          <p className={css.title}>
-            <button className={css.button} onClick={auth.unauthenticate}>
-              Sign out
-            </button>{" "}
-            to create a new account.
-          </p>
-        </div>
+        <Page title="Create Account" parentUrl="/">
+          <button onClick={auth.unauthenticate}>Sign out</button> to create a
+          new account.
+        </Page>
       );
 
     case "Failed":
     case "Unauthenticated":
       return (
-        <div className={css.root}>
-          <h1 className={css.title}>Create Account</h1>
-
-          <Form className={css.form} />
-        </div>
+        <Page title="Create Account" parentUrl="/">
+          <Form />
+        </Page>
       );
   }
 };

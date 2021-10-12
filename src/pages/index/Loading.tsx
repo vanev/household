@@ -1,9 +1,5 @@
-import css from "./Loading.module.css";
+import Page from "components/Page";
 
-const Loading = () => (
-  <div className={css.root}>
-    <p className={css.title}>Loading...</p>
-  </div>
-);
+const Loading = () => <Page title="Loading...">Loading...</Page>;
 
 export default Loading;

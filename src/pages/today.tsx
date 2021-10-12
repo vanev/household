@@ -3,9 +3,9 @@ import { startOfDay, endOfDay } from "date-fns/fp";
 import { merge } from "lib/Observable";
 import FirestoreObservable from "lib/Firebase/FirestoreObservable";
 import Todo from "types/Todo";
+import Page from "components/Page";
 import List from "components/TodoList";
 import collection from "queries/Todos/collection";
-import css from "./styles.module.css";
 
 const now = new Date();
 const todayStart = startOfDay(now);
@@ -36,10 +36,9 @@ const observable: FirestoreObservable<Todo> = merge([
 ]);
 
 const Today = () => (
-  <div className={css.root}>
-    <h1 className={css.title}>Today</h1>
-    <List observable={observable} className={css.list} />
-  </div>
+  <Page title="Today" parentUrl="/">
+    <List observable={observable} />
+  </Page>
 );
 
 export default Today;
