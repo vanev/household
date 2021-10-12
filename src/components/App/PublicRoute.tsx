@@ -1,12 +1,12 @@
 import { ComponentProps } from "react";
 import { Route, Redirect } from "react-router-dom";
 import useAuth from "hooks/useAuth";
-import Loading from "./Loading";
+import LoadingPage from "../LoadingPage";
 
 const PrivateRoute = ({ children, ...rest }: ComponentProps<typeof Route>) => {
   const auth = useAuth();
 
-  if (auth._tag === "Loading") return <Loading />;
+  if (auth._tag === "Loading") return <LoadingPage />;
 
   return (
     <Route

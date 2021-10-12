@@ -1,5 +1,5 @@
 import useAuth from "hooks/useAuth";
-import Loading from "./Loading";
+import LoadingPage from "components/LoadingPage";
 import Welcome from "./Welcome";
 import Menu from "./Menu";
 
@@ -8,7 +8,7 @@ const Home = () => {
 
   switch (auth._tag) {
     case "Loading":
-      return <Loading />;
+      return <LoadingPage />;
 
     case "Failed":
     case "Unauthenticated":

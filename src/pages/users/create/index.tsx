@@ -1,5 +1,6 @@
 import useAuth from "hooks/useAuth";
 import Page from "components/Page";
+import LoadingPage from "components/LoadingPage";
 import Form from "./Form";
 
 const UsersCreate = () => {
@@ -7,11 +8,7 @@ const UsersCreate = () => {
 
   switch (auth._tag) {
     case "Loading":
-      return (
-        <Page title="Create Account" parentUrl="/">
-          Loading...
-        </Page>
-      );
+      return <LoadingPage title="Create Account" parentUrl="/" />;
 
     case "Authenticated":
       return (
