@@ -41,7 +41,12 @@ const ClosedTodo = ({ snapshot, onExpandClick, className }: Props) => {
       />
 
       <button className={css.title} onClick={onExpandClick}>
-        <span className={css.label}>{todo.title}</span>
+        <span className={css.label}>
+          {isSome(todo.when) ? (
+            <span className={css.date}>{format("M/dd")(todo.when.value)}</span>
+          ) : null}
+          {todo.title}
+        </span>
 
         <span className={css.icons}>
           {isToday(todo) ? <span className={css.icon}>☀️</span> : null}
@@ -55,8 +60,8 @@ const ClosedTodo = ({ snapshot, onExpandClick, className }: Props) => {
                   : "❕️"}
               </span>
 
-              <span className={css.note}>
-                {format("MM-dd-yyyy", todo.deadline.value)}
+              <span className={css.date}>
+                {format("M/dd", todo.deadline.value)}
               </span>
             </>
           ) : null}

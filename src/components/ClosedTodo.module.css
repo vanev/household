@@ -49,10 +49,23 @@
   font-size: 1rem;
 }
 
+.date {
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: #ececec;
+  padding: 0.125em 0.25em;
+  display: inline-block;
+  border-radius: 0.25rem;
+}
+
 .label {
   display: flex;
   align-items: center;
   max-width: 100%;
+}
+
+.label .date {
+  margin-right: 0.5rem;
 }
 
 .label + .icons {
