@@ -1,0 +1,17 @@
+.root {
+}
+
+.item {
+}
+
+.item + .item {
+  margin-top: 0.25rem;
+}
+
+.groupName {
+  text-indent: -0.35rem;
+}
+.groupName:first-letter {
+  visibility: hidden;
+  font-family: var(--font-monospace);
+}
