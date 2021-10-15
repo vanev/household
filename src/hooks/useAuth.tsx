@@ -58,7 +58,7 @@ export const Provider = ({ children }: Props) => {
       setState(failed(error));
     };
 
-    FirebaseAuth.onAuthStateChanged(auth, handleChange, handleError);
+    return FirebaseAuth.onAuthStateChanged(auth, handleChange, handleError);
   }, []);
 
   const authenticate = React.useCallback(
