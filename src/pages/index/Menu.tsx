@@ -13,6 +13,10 @@ const Menu = ({ auth }: Props) => (
       Today
     </Link>
 
+    <Link className={css.link} to="/upcoming">
+      Upcoming
+    </Link>
+
     <Link className={css.link} to="/everything">
       Everything
     </Link>

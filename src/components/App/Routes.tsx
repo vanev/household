@@ -3,6 +3,7 @@ import UsersCreate from "pages/users/create";
 import Home from "pages/index/index";
 import Everything from "pages/everything";
 import Today from "pages/today";
+import Upcoming from "pages/upcoming";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
@@ -18,6 +19,10 @@ const Routes = () => (
 
     <PrivateRoute path="/today">
       <Today />
+    </PrivateRoute>
+
+    <PrivateRoute path="/upcoming">
+      <Upcoming />
     </PrivateRoute>
 
     <Route path="/">
