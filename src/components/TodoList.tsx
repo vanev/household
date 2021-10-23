@@ -25,9 +25,9 @@ const todoDate = (snapshot: QueryDocumentSnapshot<Todo>): Option<Date> => {
 
   if (isSome(todo.completedAt)) return todo.completedAt;
 
-  if (isSome(todo.when)) return todo.when;
+  if (isSome(todo.startAt)) return todo.startAt;
 
-  return todo.deadline;
+  return todo.dueAt;
 };
 
 const todoDateOrd = contramap(todoDate)(getOrd(dateOrd));

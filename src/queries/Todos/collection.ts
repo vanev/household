@@ -6,7 +6,11 @@ import { fromTimestamp } from "lib/Date";
 import Todo from "types/Todo";
 
 const todoConverter: Firestore.FirestoreDataConverter<Todo> = {
-  toFirestore: (todo) => todo,
+  toFirestore: (todo) => ({
+    ...todo,
+    when: todo.startAt,
+    deadline: todo.dueAt,
+  }),
   fromFirestore: (doc) => {
     const { title, notes, when, deadline, completedAt } = doc.data();
 
@@ -15,8 +19,8 @@ const todoConverter: Firestore.FirestoreDataConverter<Todo> = {
     return {
       title,
       notes,
-      when: map(fromTimestamp)(when),
-      deadline: map(fromTimestamp)(deadline),
+      startAt: map(fromTimestamp)(when),
+      dueAt: map(fromTimestamp)(deadline),
       completedAt: map(fromTimestamp)(completedAt),
     };
   },

@@ -24,8 +24,8 @@ type Props = {
 type Values = {
   title: string;
   notes: string;
-  when: string;
-  deadline: string;
+  startAt: string;
+  dueAt: string;
 };
 
 const optionDateToString = flow(
@@ -36,15 +36,15 @@ const optionDateToString = flow(
 const valuesFromTodo = (todo: Todo): Values => ({
   title: todo.title,
   notes: todo.notes,
-  when: optionDateToString(todo.when),
-  deadline: optionDateToString(todo.deadline),
+  startAt: optionDateToString(todo.startAt),
+  dueAt: optionDateToString(todo.dueAt),
 });
 
 const emptyValues: Values = {
   title: "",
   notes: "",
-  when: "",
-  deadline: "",
+  startAt: "",
+  dueAt: "",
 };
 
 const ExpandedTodo = ({ snapshot, onSave, className }: Props) => {
@@ -66,8 +66,8 @@ const ExpandedTodo = ({ snapshot, onSave, className }: Props) => {
         const todo: Todo = {
           title: values.title,
           notes: values.notes,
-          when: fromEither(fromDateInputValue(values.when)),
-          deadline: fromEither(fromDateInputValue(values.deadline)),
+          startAt: fromEither(fromDateInputValue(values.startAt)),
+          dueAt: fromEither(fromDateInputValue(values.dueAt)),
           completedAt: none,
         };
 
@@ -104,33 +104,33 @@ const ExpandedTodo = ({ snapshot, onSave, className }: Props) => {
       />
 
       <div className={css.dateField}>
-        <label className={css.dateLabel} htmlFor="when">
+        <label className={css.dateLabel} htmlFor="startAt">
           When
         </label>
         <input
           className={css.dateInput}
           type="date"
-          name="when"
-          id="when"
-          value={values.when}
+          name="startAt"
+          id="startAt"
+          value={values.startAt}
           onChange={(event) =>
-            setValues((v) => ({ ...v, when: event.target.value }))
+            setValues((v) => ({ ...v, startAt: event.target.value }))
           }
         />
       </div>
 
       <div className={css.dateField}>
-        <label className={css.dateLabel} htmlFor="deadline">
+        <label className={css.dateLabel} htmlFor="dueAt">
           Deadline
         </label>
         <input
           className={css.dateInput}
           type="date"
-          name="deadline"
-          id="deadline"
-          value={values.deadline}
+          name="dueAt"
+          id="dueAt"
+          value={values.dueAt}
           onChange={(event) =>
-            setValues((v) => ({ ...v, deadline: event.target.value }))
+            setValues((v) => ({ ...v, dueAt: event.target.value }))
           }
         />
       </div>

@@ -10,15 +10,19 @@ import { DateRange } from "lib/DateRange";
 export type Todo = {
   title: NonEmptyString;
   notes: string;
-  when: Option<Date>;
-  deadline: Option<Date>;
+  startAt: Option<Date>;
+  dueAt: Option<Date>;
   completedAt: Option<Date>;
 };
 
 export const isComplete = (todo: Todo): boolean => isSome(todo.completedAt);
 
+export const startAt = (todo: Todo): Option<Date> => todo.startAt;
+
+export const dueAt = (todo: Todo): Option<Date> => todo.dueAt;
+
 export const doAt = (todo: Todo): Option<Date> =>
-  isSome(todo.when) ? todo.when : todo.deadline;
+  isSome(todo.startAt) ? todo.startAt : todo.dueAt;
 
 export const doAtIs = (predicate: Predicate<Date>) =>
   flow(
