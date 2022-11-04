@@ -2,7 +2,6 @@
   padding: 0.5rem;
   border-radius: 0.25rem;
   background-color: #ececec;
-  text-align: right;
 }
 
 .title {
@@ -69,14 +68,25 @@
   margin-top: 0.5rem;
 }
 
-.dateField + .saveButton {
+.dateField + .actions {
   margin-top: 0.5rem;
 }
 
-.saveButton {
+.actions {
+  text-align: right;
+}
+
+.action + .action {
+  margin-left: 0.5rem;
+}
+
+.action {
   border: 1px solid #8f8f8f;
   border-radius: 0.25rem;
   background-color: #ececec;
   font-family: var(--font-sans-serif);
   font-size: 0.875rem;
+}
+.action.primary {
+  font-weight: bold;
 }

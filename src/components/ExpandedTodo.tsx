@@ -55,6 +55,10 @@ const ExpandedTodo = ({ snapshot, onSave, className }: Props) => {
 
   const [values, setValues] = useState<Values>(initialValues);
 
+  const handleRepeatButtonClick = () => {
+    console.log("hello");
+  };
+
   return (
     <form
       className={classNames(css.root, className)}
@@ -135,9 +139,19 @@ const ExpandedTodo = ({ snapshot, onSave, className }: Props) => {
         />
       </div>
 
-      <button className={css.saveButton} type="submit">
-        Save
-      </button>
+      <div className={css.actions}>
+        <button
+          className={css.action}
+          type="button"
+          onClick={handleRepeatButtonClick}
+        >
+          Repeat...
+        </button>
+
+        <button className={classNames(css.action, css.primary)} type="submit">
+          Save
+        </button>
+      </div>
     </form>
   );
 };
